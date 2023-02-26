@@ -1,17 +1,14 @@
-import youtube_dl
+import yt_dlp
 
-print('YOUTUBE DOWNLODER')
+print('EASY DLP')
 print('=================')
 print('')
-print('author : BIMA    ')
+print('Based on "youtube" by bmcs-ux    ')
 print('')
 print('=================')
 
-nama = input ('siapa namamu? :')
 print('')
-print("    Halo " + nama)
-print('')
-print ('[pastekan link]')
+#print ('[pastekan link]')
 
 url = input ('link youtube:')
 print("download    :" + url )
@@ -23,8 +20,8 @@ def menu():
 
 def baik():
 	print('- download video')
-	ydl_options = {}
-	with youtube_dl.YoutubeDL(ydl_options) as ydl:
+	ydl_options = {'format': 'bestvideo[ext=webm]+bestaudio[ext=m4a]/bestvideo+bestaudio', 'merge-output-format': 'mp4', 'newline': True}
+	with yt_dlp.YoutubeDL(ydl_options) as ydl:
 		ydl.download([url])
 	
 def duet():
@@ -33,10 +30,9 @@ def duet():
 	url = url,download = False)
 		
 	namafile = f"{info['title']}.mp3"
-	options={'format': 'bestaudio/audio','keepvideo' :False,'outtmpl':namafile,
-	}
+	options={'format': 'bestaudio/audio','keepvideo' :False,'outtmpl':namafile}
 	
-	with youtube_dl.YoutubeDL(options) as ydl:
+	with yt_dlp.YoutubeDL(options) as ydl:
 		ydl.download([info['webpage_url']])
 		
 
